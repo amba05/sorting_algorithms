@@ -1,4 +1,5 @@
 #include "sort.h"
+#include <unistd.h>
 
 /**
  * bubble_sort - function that implements bubble sort algorithm
@@ -10,6 +11,7 @@
 void bubble_sort(int *array, size_t size)
 {
 	size_t bubble_iter, i, j, swap_int;
+	int *buffer;
 
 	bubble_iter = size - 1;
 	while (bubble_iter > 0)
@@ -21,12 +23,17 @@ void bubble_sort(int *array, size_t size)
 				swap_int = array[i + 1];
 				array[i + 1] = array[i];
 				array[i] = swap_int;
-				for (j = 0; j < size; j++)
+				buffer = array;
+				for (j = 0; j < size; j++, buffer++)
 				{
-					if (j < size - 1)
-						printf("%d, ", array[j]);
-					else
-						printf("%d\n", array[j]);
+					if (j < size - 1){
+						write(1, buffer, 4);
+						write(1, ", ", 3);
+					}
+					else{
+						write(1, buffer, 4);
+						write(1, "\n", 2);
+					}
 				}
 			}
 		}
