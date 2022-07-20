@@ -27,12 +27,10 @@ void bubble_sort(int *array, size_t size)
 				for (j = 0; j < size; j++, buffer++)
 				{
 					if (j < size - 1){
-						write(1, buffer, 4);
-						write(1, ", ", 3);
+						printf("%d, ", array[j]);
 					}
 					else{
-						write(1, buffer, 4);
-						write(1, "\n", 2);
+						printf("%d\n", array[j]);
 					}
 				}
 			}
